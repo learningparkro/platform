@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wouso VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-15 22:31+0300\n"
+"POT-Creation-Date: 2015-06-03 21:42+0300\n"
 "PO-Revision-Date: 2012-10-30 23:28+0200\n"
 "Last-Translator: Matei Oprea <matei.oprea@rosedu.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -759,6 +759,10 @@ msgstr ""
 msgid "You can replay this quiz in {days} day(s)!"
 msgstr "Poți rula din nou acest test în {days} zile."
 
+#: games/quiz/views.py:76 games/quiz/views.py:94
+msgid "You cannot play this quiz!"
+msgstr "Nu poți rula acest test!"
+
 #: games/quiz/templates/quiz/category.html:6
 #: games/quiz/templates/quiz/sidebar.html:4
 #: resources/templates/interface/header.html:23
@@ -823,7 +827,7 @@ msgid "Objects"
 msgstr "Discipline"
 
 #: games/quiz/templates/quiz/index.html:20
-#: resources/templates/site_index.html:61
+#: resources/templates/site_index.html:68
 msgid "No categories have been added yet"
 msgstr "Nu au fost adăugate categorii"
 
@@ -1706,7 +1710,7 @@ msgstr "a dobândit {artifact}"
 #: interface/apps/files/templates/files/index.html:5
 #: interface/apps/files/templates/files/index.html:6
 #: interface/apps/files/templates/files/sidebar.html:4
-#: resources/templates/interface/header.html:24
+#: resources/templates/interface/header.html:25
 msgid "Files"
 msgstr "Fișiere"
 
@@ -1890,7 +1894,7 @@ msgid "Cannot send message."
 msgstr "Nu se poate trimite mesajul."
 
 #: interface/apps/messaging/views.py:126 interface/apps/messaging/views.py:134
-#: resources/templates/interface/header.html:25
+#: resources/templates/interface/header.html:27
 #: resources/templates/messaging/index.html:6
 #: resources/templates/messaging/index.html:29
 #: resources/templates/messaging/index.html:55
@@ -2018,7 +2022,7 @@ msgstr "Văzut ultima oară"
 
 #: resources/templates/leaderboard.html:6
 #: resources/templates/leaderboard.html:7
-#: resources/templates/interface/header.html:26
+#: resources/templates/interface/header.html:28
 #: resources/templates/interface/sidebar/leaderboard.html:7
 #: resources/templates/top/sidebar.html:6
 #: resources/templates/top/sidebar.html:27
@@ -2060,6 +2064,10 @@ msgstr "Listă completă.."
 #: resources/templates/site_index.html:12
 msgid "Activities"
 msgstr "Activități"
+
+#: resources/templates/site_index.html:48
+msgid "Access"
+msgstr "Accesează"
 
 #: resources/templates/splash.html:29 resources/templates/splash.html.py:30
 #: resources/templates/registration/login.html:30
@@ -2137,7 +2145,7 @@ msgstr "Importă fișier"
 
 #: resources/templates/cpanel/index.html:98
 #: resources/templates/interface/forum_header.html:22
-#: resources/templates/interface/header.html:35
+#: resources/templates/interface/header.html:37
 msgid "Logout"
 msgstr "Deconectare"
 
@@ -2276,11 +2284,11 @@ msgid "Message"
 msgstr "Mesaj"
 
 #: resources/templates/interface/forum_header.html:24
-#: resources/templates/interface/header.html:40
+#: resources/templates/interface/header.html:42
 msgid "Login"
 msgstr "Autentificare"
 
-#: resources/templates/interface/header.html:27
+#: resources/templates/interface/header.html:29
 msgid "Forum"
 msgstr "Discuții"
 
@@ -2879,9 +2887,6 @@ msgstr "Top rase"
 
 #~ msgid "Special quest"
 #~ msgstr "Quest special"
-
-#~ msgid "You cannot play this challenge."
-#~ msgstr "Nu poți juca această provocare."
 
 #~ msgid "Cast on me"
 #~ msgstr "Invocate pe mine"
