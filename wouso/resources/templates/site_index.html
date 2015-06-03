@@ -33,15 +33,23 @@
         </p>
         <br>
         <p>
-        Luni, 18 mai 2015, de la ora 18:00, au fost activate un nou set de teste, cele finale. Marți, 26 mai 2015, la ora 18:00, vor fi dezactivate testele de până acum (inițiale). Timpul de redare a unui test este de 3 zile. După 3 zile de la rularea unui test, îl poți rula din nou.
-        </p>
-        <p>
         Din momentul în care vei accesa un test, timpul va începe să se scurgă. Recomandăm, așadar, să accesezi testele atunci când vei avea disponibilitatea și mediul propice rezolvării acestora. Mult succes!
         </p>
         <br>
-        <br>
         <p>
         La capitolul lecții video, platforma cuprinde actualmente 141 de lecții video pe care le vei putea parcurge. Sperăm să îți fie cât mai utile!
+        </p>
+        <br>
+        <p>
+        {% if not perms.files.can_list_files %}
+        Pentru a avea acces la lecțiile de antreprenoriat, apasă pe butonul de mai jos. Ulterior vei avea acces la lecțiile de antreprenoriat prin intermediul intrării "Fișiere" din bara de sus.
+        <form method="post" role="form" class="form-horizontal" action="{% url file_list_permission %}">
+            {% csrf_token %}
+            <button class="btn btn-lg btn-primary" type="submit">{% trans 'Access' %}</button>
+        </form>
+        {% else %}
+        Lecțiile de antreprenoriat sunt accesibile prin intermediul intrării "Fișiere" din bara de sus.
+        {% endif %}
         </p>
     </div>
 

@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.models import Permission
 
 from wouso.core.ui import register_sidebar_block
 from wouso.interface.apps.files.models import FileCategory, File
@@ -17,6 +18,19 @@ def index(request):
     return render_to_response('files/index.html',
                               {'categories': categories},
                               context_instance=RequestContext(request))
+
+
+@login_required
+def get_file_list_permission(request):
+    user = request.user
+    if not user or not user.is_authenticated():
+        return ''
+
+    permission = Permission.objects.get(codename='can_list_files')
+    user.user_permissions.add(permission)
+    user.save()
+
+    return redirect('/files/')
 
 
 def sidebar_widget(context):
