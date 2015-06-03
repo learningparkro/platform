@@ -21,7 +21,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/lessons">{% trans 'Lessons' %}</a></li>
 					<li><a href="/g/quiz">{% trans 'Quizzes' %}</a></li>
-					<!-- <li><a href="/files">{% trans 'Files' %}</a></li> -->
+		{% if perms.files.can_list_files %}
+					<li><a href="/files">{% trans 'Files' %}</a></li>
+                {% endif %}
 					<!-- <li><a href="/m">{% trans 'Messages' %}</a></li> -->
 					<!-- <li><a href="/leaderboard">{% trans 'Leaderboard' %}</a></li> -->
 					<li><a href="{% url forums_overview %}">{% trans 'Forum' %}</a></li>

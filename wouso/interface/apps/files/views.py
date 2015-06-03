@@ -2,12 +2,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
+from django.contrib.auth.decorators import permission_required
 
 from wouso.core.ui import register_sidebar_block
 from wouso.interface.apps.files.models import FileCategory, File
 
 
-@login_required
+@permission_required('files.can_list_files')
 def index(request):
     """ Shows all lessons related to the current user """
 
