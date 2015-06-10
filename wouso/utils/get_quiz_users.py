@@ -15,12 +15,13 @@ sys.stdout = UTF8Writer(sys.stdout)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wouso.settings")
 
 from django.contrib.auth.models import User
+from django.db.models import Q
 from wouso.core.user.models import Race
 from wouso.core.user.models import Player
 from wouso.games.quiz.models import Quiz, QuizUser, UserToQuiz, QuizAttempt
 
 def main():
-    active_quizzes = Quiz.objects.filter(status='A')
+    active_quizzes = Quiz.objects.filter(Q(status='A') | Q(status='E'))
     for q in active_quizzes:
         user_quizzes = UserToQuiz.objects.filter(quiz=q)
         for uq in user_quizzes:

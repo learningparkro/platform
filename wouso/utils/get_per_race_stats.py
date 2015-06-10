@@ -19,6 +19,7 @@ from wouso.core.user.models import Race
 from wouso.core.user.models import Player
 from wouso.games.quiz.models import Quiz, QuizUser, UserToQuiz, QuizAttempt
 from wouso.interface.activity.models import Activity
+from django.db.models import Q
 
 def main():
     data = {}
@@ -44,7 +45,7 @@ def main():
                 'math_test_final': 0
                 }
 
-    active_quizzes = Quiz.objects.filter(status='A')
+    active_quizzes = Quiz.objects.filter(Q(status='A') | Q(status='E'))
     for q in active_quizzes:
         user_quizzes = UserToQuiz.objects.filter(quiz=q)
         for uq in user_quizzes:
