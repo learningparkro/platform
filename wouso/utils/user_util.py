@@ -152,6 +152,31 @@ def update_user(username, first_name=None, last_name=None, email=None, password=
     user.save()
     return True
 
+def update_user_by_email(email, username=None, first_name=None, last_name=None, password=None, is_active=None, is_staff=None, is_superuser=None):
+    """Update user by email. Return True if successful. Return False if user
+    does not exist.
+    """
+    user = User.objects.get(email=email)
+    if not user:
+        return False
+
+    if first_name != None:
+        user.first_name = first_name
+    if last_name != None:
+        user.last_name = last_name
+    if username != None:
+        user.username = username
+    if password != None:
+        user.set_password(password)
+    if is_active != None:
+        user.is_active = is_active
+    if is_staff != None:
+        user.is_staff = is_staff
+    if is_superuser != None:
+        user.is_superuser = is_superuser
+    user.save()
+    return True
+
 def change_password(username, password):
     """Change user password. Return True on success. Return False if user does
     not exist.
