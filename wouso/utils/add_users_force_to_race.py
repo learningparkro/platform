@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # To test, run from parent folder using a command such as:
 # PYTHONPATH=../:. python utils/add_users_force_to_race.py utils/sample-data/sample-user-list.csv
@@ -136,13 +137,14 @@ def add_user_helper(username, first_name, last_name, email, password):
     try:
         ret = wouso.utils.user_util.add_user(username, first_name, last_name, email, password, is_active=1, is_staff=0, is_superuser=0)
     except Exception, e:
-        print "h: Exception when adding %s." %(username)
+        #print "h: Exception when adding %s." %(username)
         return OP_EXCEPTION
     if ret:
-        print "h: Successfully added user %s." %(username)
+        #print "h: Successfully added user %s." %(username)
         return OP_SUCCESS
     else:
-        print "h: Failed adding user %s. User already exists." %(username)
+        pass
+        #print "h: Failed adding user %s. User already exists." %(username)
     return OP_EXISTS
 
 
@@ -178,14 +180,13 @@ def main():
         username, first_name, last_name, email, password, cookie, race = row
         (_username, ret) = add_user_no_matter_what(username, first_name, last_name, email, password, cookie)
         if ret:
-            print "Successfully added user %s." %(_username)
+            #print "Successfully added user %s." %(_username)
             ret2 = wouso.utils.user_util.add_user_to_race(_username, race)
-            if ret2:
-                print "Successfully added user %s to race %s." %(_username, race)
-            else:
-                print "Failed adding user %s to race %s." %(_username, race)
+            if not ret2:
+                print >> sys.stderr, "E: Failed adding user %s to race %s." %(_username, race)
         if not ret:
-            print "Failed adding user %s. Nothing worked." %(_username)
+            print >> sys.stderr, "E: Failed adding user %s. Nothing worked." %(_username)
+        print '"%s","%s","%s","%s","%s","%s"' %(username, first_name, last_name, email, password, race)
 
 
 if __name__ == "__main__":
