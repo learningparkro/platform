@@ -23,7 +23,7 @@ from django.db.models import Q
 
 def main():
     data = {}
-    for r in Race.objects.all():
+    for r in Race.objects.filter(can_play=True):
         num_players = len(Player.objects.filter(race=r))
         data[r] = {
                 'accounts': num_players,
@@ -55,6 +55,9 @@ def main():
             try:
                 player = Player.objects.get(id=uq.user.id)
             except Exception, e:
+                continue
+            # Only take into account playable races.
+            if player.race.can_play == False:
                 continue
             if q.id == 22:
                 data[player.race]['anorg_chem_test'] += 1
@@ -88,11 +91,17 @@ def main():
     access_activities = Activity.objects.filter(message_string='joined the game.')
     for a in access_activities:
         player = a.user_from
+        # Only take into account playable races.
+        if player.race.can_play == False:
+            continue
         data[player.race]['accessed_accounts'] += 1
 
     login_activities = Activity.objects.filter(action='login')
     for a in login_activities:
         player = a.user_from
+        # Only take into account playable races.
+        if player.race.can_play == False:
+            continue
         data[player.race]['num_logins'] += 1
 
     print u"Grup,Conturi existente,Conturi accesate,Procentaj de accesare,Număr de autentificări,Chimie anorganică,Chimie anorganică (final),Chimie organică,Chimie organică (final),Electricitate,Electricitate (final),Mecanică,Mecanică (final),Optică,Optică (final),Termodinamică,Termodinamică (final),Matematică,Matematică (final)"
