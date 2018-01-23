@@ -8,6 +8,9 @@ import sys
 import csv
 import wouso.utils.user_util
 
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 OP_SUCCESS = 0
 OP_EXCEPTION = -1
 OP_EXISTS = -2
