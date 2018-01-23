@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wouso VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-23 15:22+0200\n"
+"POT-Creation-Date: 2018-01-23 18:40+0200\n"
 "PO-Revision-Date: 2012-10-30 23:28+0200\n"
 "Last-Translator: Matei Oprea <matei.oprea@rosedu.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1710,6 +1710,31 @@ msgstr "Obligatoriu. Furnizați o adresă de email validă."
 msgid "This email address is already in use."
 msgstr "Această adresă de email este deja folosită."
 
+#: interface/views.py:56
+msgid "Activate Your LearningPark Account"
+msgstr "Activeaza-ti contul LearninPark"
+
+#: interface/views.py:57
+#, python-format
+msgid ""
+"Hi %(user)s,\n"
+"\n"
+"Please click on the link below to confirm your registration:\n"
+"\n"
+"http://%(domain)s/activate/%(id)s/%(token)s/\n"
+"\n"
+"Best regards,\n"
+"LearningPark Admin"
+msgstr ""
+"Salutare %(user)s,\n"
+"\n"
+"Pentru a confirma înregistrarea ta pe site-ul LearningPark, te rugăm să accesezi link-ul de mai jos:\n"
+"\n"
+"http://%(domain)s/activate/%(id)s/%(token)s/\n"
+"\n"
+"Toate bune,\n"
+"LearningPark Admin"
+
 #: interface/activity/achievements.py:257
 #, python-brace-format
 msgid "earned {artifact}"
@@ -2675,6 +2700,19 @@ msgstr "Evoluția poziției comparată cu grupuri de același tip"
 #: resources/templates/profile/spells.html:9
 msgid "Magic summary"
 msgstr "Sumar magie"
+
+#: resources/templates/registration/account_activation_invalid.html:5
+msgid ""
+"The confirmation link was invalid, possibly because it has already been used."
+msgstr ""
+
+#: resources/templates/registration/account_activation_sent.html:5
+msgid "Please confirm your email address to complete the registration."
+msgstr ""
+
+#: resources/templates/registration/account_activation_successful.html:5
+msgid "Your account has been activated. You can now login."
+msgstr ""
 
 #: resources/templates/registration/login.html:9
 msgid "Authentication"

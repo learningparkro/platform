@@ -113,6 +113,8 @@ class Player(models.Model):
     """
     user = models.ForeignKey(User, unique=True, related_name="%(class)s_related")
 
+    email_confirmed = models.BooleanField(default=False)
+
     full_name = models.CharField(max_length=200)
     # Unique differentiator for ladder
     # Do not modify it manually, use scoring.score instead

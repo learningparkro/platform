@@ -251,6 +251,12 @@ def remove_user_from_race(username, race_name):
     player.save()
     return True
 
+def mark_email_confirmed():
+    """Mark email as confirmed for all players.
+    """
+    for p in Player.objects.all():
+        p.email_confirmed = True
+        p.save()
 
 def main():
     """In main, parse command line arguments and call corresponding functions.
@@ -271,6 +277,7 @@ def main():
     parser.add_argument("--change-password", help="change user password", nargs=2, metavar=("USERNAME", "PASSWORD"))
     parser.add_argument("--add-user-to-race", help="add user to race", nargs=2, metavar=("USERNAME", "RACE_NAME"))
     parser.add_argument("--remove-user-from-race", help="remove user from race", nargs=2, metavar=("USERNAME", "RACE_NAME"))
+    parser.add_argument("--mark-email-confirmed", help="mark email confirmed", action="store_true")
     args = parser.parse_args()
 
     if args.list_users:
@@ -347,6 +354,9 @@ def main():
         username = args.remove_user_from_race[0]
         race_name = args.remove_user_from_race[1]
         remove_user_from_race(username, race_name)
+
+    if args.mark_email_confirmed:
+        mark_email_confirmed()
 
 
 if __name__ == "__main__":

@@ -14,6 +14,9 @@ from django.shortcuts import render, render_to_response, get_object_or_404, redi
 from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.translation import ugettext as _
+from django.contrib.sites.models import get_current_site
+from django.utils.http import int_to_base36, base36_to_int
 
 from wouso.core.ui import register_sidebar_block
 from wouso.core import signals
@@ -25,6 +28,7 @@ from wouso.core.user.models import Race
 from wouso.core.user.models import Player, PlayerGroup
 from wouso.interface.activity.models import Activity
 from wouso.interface.top.models import Top, TopUser, History as TopHistory
+from wouso.core.tokens import account_activation_token
 
 
 def get_wall(page=u'1'):
@@ -45,15 +49,47 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('hub')
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()
+            current_site = get_current_site(request)
+            subject = _('Activate Your LearningPark Account')
+            message = _("""Hi %(user)s,
+
+Please click on the link below to confirm your registration:
+
+http://%(domain)s/activate/%(id)s/%(token)s/
+
+Best regards,
+LearningPark Admin""") % ('user': user.username, 'domain': current_site.domain, 'id': int_to_base36(user.pk),
+                    'token': account_activation_token.make_token(user))
+            user.email_user(subject, message)
+            return redirect('account_activation_sent')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def account_activation_sent(request):
+    return render(request, 'registration/account_activation_sent.html')
+
+
+def activate(request, uidb36, token):
+    try:
+        uid = base36_to_int(uidb36)
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        player = user.get_profile()
+        player.email_confirmed = True
+        user.save()
+        player.save()
+        return render(request, 'registration/account_activation_successful.html')
+    else:
+        return render(request, 'registration/account_activation_invalid.html')
 
 
 def login_view(request):

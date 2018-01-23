@@ -7,6 +7,8 @@ urlpatterns = patterns('',
     (r'^ckeditor/', include('ckeditor.urls')),
 
     url(r'^signup/$', 'wouso.interface.views.signup', name='signup'),
+    url(r'^account_activation_sent/$', 'wouso.interface.views.account_activation_sent', name='account_activation_sent'),
+    url(r'^activate/(?P<uidb36>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', 'wouso.interface.views.activate', name='activate'),
     url(r'^$', 'wouso.interface.views.homepage', name='homepage'),
     url(r'^hub/$', 'wouso.interface.views.hub', name='hub'),
     url(r'^(?P<page>\d*)/$', 'wouso.interface.views.homepage', name='homepage'),
