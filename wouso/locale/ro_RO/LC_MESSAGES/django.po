@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wouso VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-03 21:42+0300\n"
+"POT-Creation-Date: 2018-01-23 15:22+0200\n"
 "PO-Revision-Date: 2012-10-30 23:28+0200\n"
 "Last-Translator: Matei Oprea <matei.oprea@rosedu.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1702,6 +1702,14 @@ msgstr "Editează poziție"
 msgid "Integrity Check"
 msgstr "Verificare de integritate"
 
+#: interface/forms.py:19
+msgid "Required. Inform a valid email address."
+msgstr "Obligatoriu. Furnizați o adresă de email validă."
+
+#: interface/forms.py:35
+msgid "This email address is already in use."
+msgstr "Această adresă de email este deja folosită."
+
 #: interface/activity/achievements.py:257
 #, python-brace-format
 msgid "earned {artifact}"
@@ -2684,6 +2692,11 @@ msgstr "Ai schimbat cu succes parola!"
 #: resources/templates/registration/password_change_done.html:11
 msgid "Back to profile"
 msgstr "Înapoi la profil"
+
+#: resources/templates/registration/signup.html:5
+#: resources/templates/registration/signup.html:20
+msgid "Sign up"
+msgstr "Creează cont"
 
 #: resources/templates/statistics/stats.html:3
 msgid "Statistics"

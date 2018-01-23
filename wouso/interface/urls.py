@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^ckeditor/', include('ckeditor.urls')),
 
+    url(r'^signup/$', 'wouso.interface.views.signup', name='signup'),
     url(r'^$', 'wouso.interface.views.homepage', name='homepage'),
     url(r'^hub/$', 'wouso.interface.views.hub', name='hub'),
     url(r'^(?P<page>\d*)/$', 'wouso.interface.views.homepage', name='homepage'),
