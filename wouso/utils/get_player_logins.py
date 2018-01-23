@@ -23,6 +23,8 @@ def main():
     login_activities = Activity.objects.filter(action='login')
     for a in login_activities:
         player = a.user_from
+        if not player.race.can_play:
+            continue
         print '"%s","%s","%s"' %(str(a.timestamp), player.race.title, player.full_name)
 
 if __name__ == "__main__":
