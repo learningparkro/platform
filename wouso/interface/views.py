@@ -54,15 +54,12 @@ def signup(request):
             user.save()
             current_site = get_current_site(request)
             subject = _('Activate Your LearningPark Account')
-            message = _("""Hi %(user)s,
-
-Please click on the link below to confirm your registration:
-
-http://%(domain)s/activate/%(id)s/%(token)s/
-
-Best regards,
-LearningPark Admin""") % ('user': user.username, 'domain': current_site.domain, 'id': int_to_base36(user.pk),
-                    'token': account_activation_token.make_token(user))
+            message = render_to_string('registration/account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': int_to_base36(user.pk),
+                'token': account_activation_token.make_token(user),
+                })
             user.email_user(subject, message)
             return redirect('account_activation_sent')
     else:

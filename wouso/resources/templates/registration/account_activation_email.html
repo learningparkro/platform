@@ -1,10 +1,13 @@
-{% autoescape off %}
-Hi {{ user.username }},
+{% load url from future %}
+{% load i18n %}
 
-Please click on the link below to confirm your registration:
+{% trans "Hi" %} {{ user.username }},
 
-http://{{ domain }}{% url 'hub' %}
-{% endautoescape %}
-{% comment %}
+{% trans "Please click on the link below to confirm your registration for an account on LearningPark" %}:
+
 http://{{ domain }}{% url 'activate' uidb36=uid token=token %}
-{% endcomment %}
+
+{% trans "If clicking the link above doesn't work, please copy and paste the URL in a new browser window instead." %}
+
+{% trans "Sincerely" %},
+LearningPark Admin
