@@ -12,13 +12,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" style="padding:0 15px;" href="#">
+				<a class="navbar-brand" style="padding:0 15px;" href="/">
 					<img src="{{ basepath }}/static/img/owl_small.png" width="38px"></a>
 				<a class="navbar-brand" href="/">LearningPark</a>
 			</div>
 
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
+                {% if user.is_authenticated %}
 					<li><a href="/lessons">{% trans 'Lessons' %}</a></li>
 					<li><a href="/g/quiz">{% trans 'Quizzes' %}</a></li>
 		{% if perms.files.can_list_files %}
@@ -30,6 +31,7 @@
 					{% if perms.config.change_setting %}
 					<li><a href="{% url status %}">CPanel</a></li>
 					{% endif %}
+                {% endif %}
 				</ul>
 				<form class="form-inline navbar-form navbar-right">
 					{% if user.is_authenticated %}
