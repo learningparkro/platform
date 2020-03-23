@@ -13,38 +13,14 @@
 {% block sectioncontent %}
 <div>
 	<section class="row login-box">
-		<div class="col-md-3">
-
-		</div>
-
 		<div id="login" class="col-md-6">
-
-			{% if form.errors %}
+		{% if form.errors %}
 				<p class="text-danger error">
 					{% trans "Your username and password didn't match. Please try again." %}
 				</p>
-			{% endif %}
-
-	        <form action="{% url wouso.interface.views.login_view %}" method="post">
-	        	<div class="form-group">
-	                <label for="username">{% trans 'username' %}</label>
-	                <input type="text" class="form-control" name="username" id="username" placeholder="{% trans 'username' %}"/>
-	        	</div>
-	        	<div class="form-group">
-	                <label for="password">{% trans 'password' %}</label>
-	                <input type="password" class="form-control" name="password" id="password" placeholder="{% trans 'password' %}"/>
-				</div>
-	        	<div class="form-group submit">
-	            	<button type="submit" class="btn btn-success">{% trans 'login' %}</button>
-	            </div>
-	            {% csrf_token %}
-	        </form>
-			<section class="help">
-				Pentru probleme în accesarea platformei deschide un tichet pe <a href="http://support.learningpark.ro">site-ul de suport</a>.
-			</section>
-		</div>
-
-		<div class="col-md-3"></div>
+		{% endif %}
+                {% include 'registration/login_include.html' %}
+                </div>
 	</section>
 
 </div>
