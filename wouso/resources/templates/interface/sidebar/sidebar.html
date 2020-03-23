@@ -4,7 +4,9 @@
 {% load i18n %}
 {% load top %}
 
+{% if user.is_authenticated %}
 {% include 'interface/sidebar/search.html' %}
 {% include 'interface/sidebar/progress.html' %}
 {% render_top %}
 {% include 'messaging/sidebar.html' %}
+{% endif %}
