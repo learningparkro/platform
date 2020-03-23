@@ -4,6 +4,6 @@
 
 {% block content %}
   <p>
-  {% trans "Your password has been reset. " %}{% trans "You may go ahead and " %}<a href="{% url 'login_view' %}">{% trans "login" %}</a> {% trans " now." %}
+  {% trans "Your password has been reset." %} &nbsp; {% trans "You may go ahead and " %}<a href="{% url 'login_view' %}">{% trans "login" %}</a> {% trans " now." %}
   </p>
 {% endblock %}

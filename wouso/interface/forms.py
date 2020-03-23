@@ -17,14 +17,14 @@ class SignUpForm(UserCreationForm):
     first_name = forms.RegexField(label=_("First name"), max_length=30, required=False,
 #            regex=r'^[a-zA-Z -]+$', help_text = _("30 characters or fewer. Letters, blanks and - only."),
             regex=r'^[a-zA-Z -]+$',
-            error_messages = {'invalid': _("This value may contain only letters, blanks and - characters.")})
+            error_messages = {'invalid': _("This field may contain only letters, blanks and - characters.")})
     last_name = forms.RegexField(label=_("Last name"), max_length=30, required=False,
 #            regex=r'^[a-zA-Z -]+$', help_text = _("30 characters or fewer. Letters, blanks and - only."),
             regex=r'^[a-zA-Z -]+$',
-            error_messages = {'invalid': _("This value may contain only letters, blanks and - characters.")})
+            error_messages = {'invalid': _("This field may contain only letters, blanks and - characters.")})
     email = forms.RegexField(label=_("Email"), max_length=30, regex=r'^[\w.@+-]+$',
-            help_text = _("Required. Inform a valid email address."),
-            error_messages = {'invalid': _("This value may contain only letters, numbers and @/./+/-/_ characters.")})
+            help_text = _("Required. Fill a valid email address."),
+            error_messages = {'invalid': _("This field may contain only letters, digits and @/./+/-/_ characters.")})
 
     def clean_email(self):
         # Get the email

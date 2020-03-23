@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wouso VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-17 21:52+0200\n"
+"POT-Creation-Date: 2020-03-23 19:21+0200\n"
 "PO-Revision-Date: 2012-10-30 23:28+0200\n"
 "Last-Translator: Matei Oprea <matei.oprea@rosedu.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,6 @@ msgid "cast a spell on himself/herself"
 msgstr "a făcut o vrajă pe sine"
 
 #: core/magic/manager.py:187
-#, fuzzy, python-brace-format
 msgid "cast a spell on {to} "
 msgstr "a făcut o vrajă pe "
 
@@ -1707,19 +1706,27 @@ msgstr "Verificare de integritate"
 msgid "First name"
 msgstr "Prenume"
 
-#: interface/forms.py:17 interface/forms.py:18
-msgid "Optional."
-msgstr "Opțional."
+#: interface/forms.py:20 interface/forms.py:24
+msgid "This field may contain only letters, blanks and - characters."
+msgstr "Acest câmp poate conține numai litere, spații și caracterul -."
 
-#: interface/forms.py:18
+#: interface/forms.py:21
 msgid "Last name"
 msgstr "Nume"
 
-#: interface/forms.py:19
-msgid "Required. Inform a valid email address."
+#: interface/forms.py:25
+msgid "Email"
+msgstr "Email"
+
+#: interface/forms.py:26
+msgid "Required. Fill a valid email address."
 msgstr "Obligatoriu. Furnizați o adresă de email validă."
 
-#: interface/forms.py:35
+#: interface/forms.py:27
+msgid "This field may contain only letters, digits and @/./+/-/_ characters."
+msgstr "Acest câmp poate conține numai litere, cifre și caracterele @/./+/-/_."
+
+#: interface/forms.py:43
 msgid "This email address is already in use."
 msgstr "Această adresă de email este deja folosită."
 
@@ -2711,18 +2718,17 @@ msgstr ""
 "Link-ul de confirmare este nevalid, posibil pentru că a fost deja folosit."
 
 #: resources/templates/registration/account_activation_sent.html:5
-msgid ""
-"An email with a confirmation link has been sent to your email address. "
-"Please click the link to confirm your email address and complete the "
+msgid "An email with a confirmation link has been sent to your email address."
+msgstr "Am trimis un email cu un link de confirmare către adresa ta de email."
+
+#: resources/templates/registration/account_activation_sent.html:5
+msgid "Please click the link to confirm your email address and complete the "
 "registration."
-msgstr ""
-"A fost trimis un email cu un link de confirmare la adresa ta de email. Să "
-"accesezi link-ul pentru a confirma adresa de email și pentru a definitiva "
+msgstr "Folosește link-ul să confirmi adresa de email pentru a definitiva "
 "înregistrarea."
 
 #: resources/templates/registration/account_activation_successful.html:7
-#: resources/templates/registration/password_reset_complete.html:7
-msgid "Your password has been reset. "
+msgid "Your password has been reset."
 msgstr "Parola ta a fost resetată."
 
 #: resources/templates/registration/account_activation_successful.html:7
@@ -2747,10 +2753,9 @@ msgstr "Autentificare"
 #: resources/templates/registration/login.html:19
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
-"Numele de utilizator sau parola nu se potrivesc. Te rog încearcă din nou."
+"Numele de utilizator sau parola nu se potrivesc. Încercă din nou."
 
 #: resources/templates/registration/login_include.html:4
-#, fuzzy
 msgid "Username"
 msgstr "Nume de utilizator"
 
@@ -2796,12 +2801,16 @@ msgstr "Ai schimbat cu succes parola!"
 msgid "Back to profile"
 msgstr "Înapoi la profil"
 
+#: resources/templates/registration/password_reset_complete.html:7
+msgid "Your password has been reset. "
+msgstr "Parola ta a fost resetată."
+
 #: resources/templates/registration/password_reset_confirm.html:14
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
-"Link-ul de confirmare este nevalid, posibil pentru că a fost deja folosit."
+"Link-ul de confirmare este nevalid, posibil pentru că a fost deja folosit. Recomandăm să resetezi din nou parola."
 
 #: resources/templates/registration/password_reset_done.html:6
 msgid ""
@@ -2909,11 +2918,11 @@ msgstr "Clasamentul a fost dezactivat"
 msgid "Top races"
 msgstr "Top rase"
 
+#~ msgid "Optional."
+#~ msgstr "Opțional."
+
 #~ msgid "Forgot password"
 #~ msgstr "Am uitat parola"
-
-#~ msgid "Please confirm your email address to complete the registration."
-#~ msgstr "Confirmă adresa de email pentru a definitiva înregistrarea."
 
 #~ msgid "Your account has been activated"
 #~ msgstr "Contul tău a fost activat."
